@@ -56,11 +56,11 @@ public:
                             this->sendMessage("gc;strat;axis;0," + std::to_string(event.caxis.value) + "\n");
                         }
                         else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY) {
-                            std::cout << "Left Y axis moved to " << event.caxis.value << std::endl;
+                            // std::cout << "Left Y axis moved to " << event.caxis.value << std::endl;
                             this->sendMessage("gc;strat;axis;1," + std::to_string(event.caxis.value) + "\n");
                         }
                         else if (event.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTX) {
-                            std::cout << "Right X axis moved to " << event.caxis.value << std::endl;
+                            // std::cout << "Right X axis moved to " << event.caxis.value << std::endl;
                             this->sendMessage("gc;strat;axis;2," + std::to_string(event.caxis.value) + "\n");
                         }
                         else if (event.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTY) {
