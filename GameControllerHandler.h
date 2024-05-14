@@ -71,10 +71,13 @@ public:
                     case SDL_CONTROLLERBUTTONDOWN:
                         // std::cout << "Button down " << static_cast<int>(event.cbutton.button) << std::endl;
                         this->sendMessage("gc;strat;button down;" + std::to_string(event.cbutton.button) + "\n");
+                    break;
                     case SDL_CONTROLLERBUTTONUP:
                         // std::cout << "Button up " << static_cast<int>(event.cbutton.button) << std::endl;
                         this->sendMessage("gc;strat;button up;" + std::to_string(event.cbutton.button) + "\n");
                     break;
+                    default:
+                        break;
                 }
             }
         }
