@@ -53,9 +53,9 @@ public:
                     strength = 0;
                 }
 
-                if (SDL_GameControllerRumble(controller, strength, strength, 1000) != 0) {
-                    std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
-                }
+                // if (SDL_GameControllerRumble(controller, strength, strength, 1000) != 0) {
+                    // std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
+                // }
             }
 
             if (tokens[2] == "ready") {
