@@ -42,13 +42,13 @@ public:
             if (tokens[2] == "stop proximity") {
                 std::vector<std::string> args = Utils::split(tokens[3], ",");
                 int distance = stoi(args[0]);
-                double angle = stod(args[1]) / 100;
+                double angle = (stod(args[1]) / 100) + (PI / 2);
 
                 Uint16 strength = 0xFFFF;
                 if (distance < 200) {
                     strength = static_cast<Uint16>((200 - distance) * 0xFFFF / 200);
 
-                    double angleFactor = std::abs(std::sin(angle));
+                    double angleFactor = 1 - std::abs(std::sin(angle));
                     strength *= angleFactor;
                 }
 

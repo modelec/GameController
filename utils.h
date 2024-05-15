@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+#define PI 3.14159265358979323846
+
 namespace Utils {
     inline bool startWith(const std::string& str, const std::string& start)
     {
