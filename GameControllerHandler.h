@@ -41,21 +41,21 @@ public:
         if (tokens[1] == "all" || tokens[1] == "gc") {
             if (tokens[2] == "stop proximity") {
                 std::vector<std::string> args = Utils::split(tokens[3], ",");
-                int distance = stoi(args[0]);
+                double distance = stod(args[0]);
                 Uint16 strength;
 
-                if (distance <= 200) {
+                if (distance <= 100) {
                     strength = 0xFFFF;
                 } else if (distance <= 500) {
-                    double factor = 1.0 - static_cast<double>(distance - 200) / (500 - 200);
+                    double factor = 1 - Utils::mapValue(distance, 100.0, 500.0, 0.0, 1.0);
                     strength = static_cast<Uint16>(factor * 0xFFFF);
                 } else {
                     strength = 0;
                 }
 
-                // if (SDL_GameControllerRumble(controller, strength, strength, 1000) != 0) {
-                    // std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
-                // }
+                if (SDL_GameControllerRumble(controller, strength, strength, 1000) != 0) {
+                    std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
+                }
             }
 
             if (tokens[2] == "ready") {

@@ -37,4 +37,9 @@ namespace Utils {
         } while (pos < str.length() && prev < str.length());
         return tokens;
     }
+
+    template<typename T>
+    T mapValue(T v, T v_min, T v_max, T v_min_prime, T v_max_prime) {
+        return v_min_prime + (((v - v_min) * (v_max_prime - v_min_prime)) / (v_max - v_min));
+    }
 }
