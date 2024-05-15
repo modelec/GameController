@@ -35,6 +35,18 @@ public:
         t.detach();
     }
 
+    void handleMessage(const std::string &message) override {
+        std::vector<std::string> tokens = Utils::split(message, ";");
+
+        if (tokens[1] == "all" || tokens[1] == "gc") {
+            if (tokens[2] == "stop proximity") {
+                if (SDL_GameControllerRumble(controller, 0xFFFF, 0xFFFF, 1000) != 0) {
+                    std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
+                }
+            }
+        }
+    }
+
     void handleEvents() {
         while (running) {
             SDL_Event event;
