@@ -75,14 +75,14 @@ public:
                     break;
                     case SDL_CONTROLLERAXISMOTION:
                         if (event.caxis.axis == SDL_CONTROLLER_AXIS_TRIGGERLEFT) {
-                            std::cout << "Trigger left moved to " << event.caxis.value << std::endl;
+                            // std::cout << "Trigger left moved to " << event.caxis.value << std::endl;
                             this->sendMessage("gc;strat;trigger;0," + std::to_string(event.caxis.value) + "\n");
                         } else if (event.caxis.axis == SDL_CONTROLLER_AXIS_TRIGGERRIGHT) {
-                            std::cout << "Trigger right moved to " << event.caxis.value << std::endl;
+                            // std::cout << "Trigger right moved to " << event.caxis.value << std::endl;
                             this->sendMessage("gc;strat;trigger;1," + std::to_string(event.caxis.value) + "\n");
                         }
                         else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX) {
-                            std::cout << "Left X axis moved to " << event.caxis.value << std::endl;
+                            // std::cout << "Left X axis moved to " << event.caxis.value << std::endl;
                             this->sendMessage("gc;strat;axis;0," + std::to_string(event.caxis.value) + "\n");
                         }
                         else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY) {
@@ -90,11 +90,11 @@ public:
                             this->sendMessage("gc;strat;axis;1," + std::to_string(event.caxis.value) + "\n");
                         }
                         else if (event.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTX) {
-                            std::cout << "Right X axis moved to " << event.caxis.value << std::endl;
+                            // std::cout << "Right X axis moved to " << event.caxis.value << std::endl;
                             this->sendMessage("gc;strat;axis;2," + std::to_string(event.caxis.value) + "\n");
                         }
                         else if (event.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTY) {
-                            std::cout << "Right Y axis moved to " << event.caxis.value << std::endl;
+                            // std::cout << "Right Y axis moved to " << event.caxis.value << std::endl;
                             // this->sendMessage("gc;strat;axis;3," + std::to_string(event.caxis.value) + "\n");
                         }
                     break;
