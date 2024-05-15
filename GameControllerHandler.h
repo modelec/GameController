@@ -109,9 +109,7 @@ public:
                     default:
                         break;
                 }
-                usleep(100);
             }
-            usleep(100);
         }
     }
 
