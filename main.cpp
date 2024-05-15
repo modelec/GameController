@@ -25,6 +25,8 @@ int main(int argc, char* argv[]) {
 
     gameControllerHandler.start();
 
+    gameControllerHandler.sendMessage("gc;strat;ready;1\n");
+
     while (!shouldStop && !gameControllerHandler.shouldStop()) {
         usleep(500'000);
     }
