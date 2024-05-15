@@ -31,8 +31,8 @@ public:
     void start() {
         TCPClient::start();
 
-        // std::thread t(&GameControllerHandler::handleEvents, this);
-        // t.detach();
+        std::thread t(&GameControllerHandler::handleEvents, this);
+        t.detach();
     }
 
     void handleMessage(const std::string &message) override {
@@ -111,6 +111,7 @@ public:
                 }
                 usleep(100);
             }
+            usleep(100);
         }
     }
 
