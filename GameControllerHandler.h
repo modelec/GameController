@@ -46,12 +46,9 @@ public:
 
                 Uint16 strength = 0xFFFF;
                 if (distance < 200) {
-                    // Ajuster la force en fonction de la distance
                     strength = static_cast<Uint16>((200 - distance) * 0xFFFF / 200);
 
-                    // Ajuster la force en fonction de l'angle
-                    // Plus l'angle s'éloigne de 0, plus la force sera forte
-                    double angleFactor = std::abs(std::sin(angle)); // L'angle est fourni en radians
+                    double angleFactor = std::abs(std::sin(angle));
                     strength *= angleFactor;
                 }
 
