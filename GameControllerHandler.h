@@ -42,7 +42,7 @@ public:
             if (tokens[2] == "stop proximity") {
                 std::vector<std::string> args = Utils::split(tokens[3], ",");
                 int distance = stoi(args[0]);
-                Uint16 strength = 0;
+                Uint16 strength;
 
                 if (distance <= 200) {
                     strength = 0xFFFF;
