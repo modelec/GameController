@@ -40,9 +40,16 @@ public:
 
         if (tokens[1] == "all" || tokens[1] == "gc") {
             if (tokens[2] == "stop proximity") {
-                // if (SDL_GameControllerRumble(controller, 0xFFFF, 0xFFFF, 1000) != 0) {
-                    // std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
-                // }
+                std::vector<std::string> args = Utils::split(tokens[3], ",");
+                int distance = stoi(args[0]);
+                Uint16 strength = 0xFFFF;
+                if (distance < 200) {
+                    strength = static_cast<Uint16>((200 - distance) * 0xFFFF / 200);
+                }
+
+                if (SDL_GameControllerRumble(controller, strength, strength, 1000) != 0) {
+                    std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
+                }
             }
 
             if (tokens[2] == "ready") {
