@@ -42,9 +42,17 @@ public:
             if (tokens[2] == "stop proximity") {
                 std::vector<std::string> args = Utils::split(tokens[3], ",");
                 int distance = stoi(args[0]);
+                double angle = stod(args[1]);
+
                 Uint16 strength = 0xFFFF;
                 if (distance < 200) {
+                    // Ajuster la force en fonction de la distance
                     strength = static_cast<Uint16>((200 - distance) * 0xFFFF / 200);
+
+                    // Ajuster la force en fonction de l'angle
+                    // Plus l'angle s'éloigne de 0, plus la force sera forte
+                    double angleFactor = std::abs(std::sin(angle)); // L'angle est fourni en radians
+                    strength *= angleFactor;
                 }
 
                 if (SDL_GameControllerRumble(controller, strength, strength, 1000) != 0) {
