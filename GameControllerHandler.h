@@ -44,6 +44,10 @@ public:
                     std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
                 }
             }
+
+            if (tokens[2] == "ready") {
+                this->sendMessage("gc;all;game mode;gc\n");
+            }
         }
     }
 
