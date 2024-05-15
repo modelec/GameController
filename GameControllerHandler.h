@@ -43,13 +43,17 @@ public:
                 std::vector<std::string> args = Utils::split(tokens[3], ",");
                 int distance = stoi(args[0]);
                 double angle = (stod(args[1]) / 100) + (PI / 2);
-
                 Uint16 strength = 0xFFFF;
-                if (distance < 200) {
-                    strength = static_cast<Uint16>((200 - distance) * 0xFFFF / 200);
 
-                    double angleFactor = 1 - std::abs(std::sin(angle));
-                    strength *= angleFactor;
+                if (distance <= 200) {
+                    strength = 0xFFFF;
+                } else if (distance <= 500) {
+                    double factor = 1.0 - static_cast<double>(distance - 200) / (500 - 200);
+                    double angleFactor = std::abs(std::sin(angle));
+
+                    strength = static_cast<Uint16>(factor * 0xFFFF);
+                } else {
+                    strength = 0;
                 }
 
                 if (SDL_GameControllerRumble(controller, strength, strength, 1000) != 0) {
