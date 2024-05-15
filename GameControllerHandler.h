@@ -70,6 +70,7 @@ public:
                 switch (event.type) {
                     case SDL_QUIT:
                         running = false;
+                        this->sendMessage("gc;strat;disconnect;1\n");
                     break;
                     case SDL_CONTROLLERAXISMOTION:
                         if (event.caxis.axis == SDL_CONTROLLER_AXIS_TRIGGERLEFT) {
