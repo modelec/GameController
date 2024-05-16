@@ -47,7 +47,7 @@ public:
                 if (distance <= 100) {
                     strength = 0xFFFF;
                 } else if (distance <= 500) {
-                    double factor = 1 - Utils::mapValue(distance, 100.0, 500.0, 0.0, 1.0);
+                    double factor = 1 - Utils::mapValue(distance, 100.0, 750.0, 0.0, 1.0);
                     strength = static_cast<Uint16>(factor * 0xFFFF);
                 } else {
                     strength = 0;
