@@ -6,13 +6,15 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(TCPSocket REQUIRED TCPSocket)
+find_package(Modelec COMPONENTS
+        TCPClient
+        Utils
+        REQUIRED
+)
 
 add_executable(GameController
         main.cpp
-        utils.h
         GameControllerHandler.h)
 
 target_link_libraries(GameController ${SDL2_LIBRARIES})
-target_link_libraries(GameController TCPSocket)
+target_link_libraries(GameController Modelec::TCPClient Modelec::Utils)

@@ -3,9 +3,9 @@
 #include <SDL.h>
 #include <iostream>
 
-#include <TCPSocket/TCPClient.hpp>
+#include <Modelec/TCPClient.h>
 
-#include "utils.h"
+#include <Modelec/Utils.h>
 
 class GameControllerHandler : public TCPClient {
 public:
@@ -36,7 +36,7 @@ public:
     }
 
     void handleMessage(const std::string &message) override {
-        std::vector<std::string> tokens = Utils::split(message, ";");
+        std::vector<std::string> tokens = Modelec::split(message, ";");
 
         if (tokens[1] == "all" || tokens[1] == "lidar") {
             if (tokens[2] == "set range") {
@@ -46,14 +46,14 @@ public:
 
         if (tokens[1] == "all" || tokens[1] == "gc") {
             if (tokens[2] == "stop proximity") {
-                std::vector<std::string> args = Utils::split(tokens[3], ",");
+                std::vector<std::string> args = Modelec::split(tokens[3], ",");
                 double distance = stod(args[0]);
                 Uint16 strength;
 
                 if (distance <= 100) {
                     strength = 0xFFFF;
                 } else if (distance <= 500) {
-                    double factor = 1 - Utils::mapValue(distance, 100.0, this->lidarDectectionDistance, 0.0, 1.0);
+                    double factor = 1 - Modelec::mapValue(distance, 100.0, this->lidarDectectionDistance, 0.0, 1.0);
                     strength = static_cast<Uint16>(factor * 0xFFFF);
                 } else {
                     strength = 0;
