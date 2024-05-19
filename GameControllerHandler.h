@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include <Modelec/TCPClient.h>
-
 #include <Modelec/Utils.h>
 
 class GameControllerHandler : public TCPClient {

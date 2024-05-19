@@ -1,5 +1,7 @@
 #include "GameControllerHandler.h"
 
+#include <Modelec/CLParser.h>
+
 #include <atomic>
 #include <mutex>
 #include <csignal>
@@ -12,10 +14,10 @@ void signalHandler( int signum ) {
 
 int main(int argc, char* argv[]) {
     signal(SIGINT, signalHandler);
-    int port = 8080;
-    if (argc > 1) {
-        port = atoi(argv[1]);
-    }
+
+    CLParser clParser(argc, argv);
+
+    int port = std::stoi(clParser.getOption("port", "8080"));
 
     GameControllerHandler gameControllerHandler("127.0.0.1", port);
 
