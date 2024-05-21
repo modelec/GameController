@@ -19,7 +19,9 @@ int main(int argc, char* argv[]) {
 
     int port = clParser.getOption<int>("port", 8080);
 
-    GameControllerHandler gameControllerHandler("127.0.0.1", port);
+    std::string host = clParser.getOption("host", "127.0.0.1");
+
+    GameControllerHandler gameControllerHandler(host.c_str(), port);
 
     if (!gameControllerHandler.init()) {
         return 1;
