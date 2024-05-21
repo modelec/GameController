@@ -85,7 +85,7 @@ void GameControllerHandler::handleEvents() {
                         this->sendMessage("gc;strat;axis;0," + std::to_string(event.caxis.value) + "\n");
                     }
                     else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY) {
-                        std::cout << "Left Y axis moved to " << event.caxis.value << std::endl;
+                        // std::cout << "Left Y axis moved to " << event.caxis.value << std::endl;
                         this->sendMessage("gc;strat;axis;1," + std::to_string(event.caxis.value) + "\n");
                     }
                     else if (event.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTX) {
