@@ -15,7 +15,7 @@ find_package(Modelec COMPONENTS
 
 add_executable(GameController
         main.cpp
-        GameControllerHandler.h)
+        GameControllerHandler.cpp)
 
 target_link_libraries(GameController ${SDL2_LIBRARIES})
 target_link_libraries(GameController Modelec::TCPClient Modelec::Utils Modelec::CLParser)
