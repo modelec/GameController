@@ -12,7 +12,7 @@ public:
 
     bool init();
 
-    void start();
+    void start() override;
 
     void handleMessage(const std::string &message) override;
 
@@ -22,7 +22,7 @@ public:
 
     void close();
 
-    ~GameControllerHandler();
+    ~GameControllerHandler() override;
 
 private:
     SDL_GameController* controller;
