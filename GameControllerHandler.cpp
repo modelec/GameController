@@ -63,10 +63,10 @@ void GameControllerHandler::handleMessage(const std::string &message) {
             this->sendMessage("gc;all;game mode;gc\n");
         }
 
-        if (tokens[2] == "start proximity") {
+        if (tokens[2] == "start proximity alert") {
             this->rumble = true;
         }
-        else if (tokens[2] == "stop proximity") {
+        else if (tokens[2] == "stop proximity alert") {
             this->rumble = false;
         }
     }
