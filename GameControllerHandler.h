@@ -27,7 +27,7 @@ public:
 private:
     SDL_GameController* controller;
 
-    double lidarDectectionDistance = 400;
+    double lidarDectectionDistance = 300;
 
     bool rumble = true;
 };
