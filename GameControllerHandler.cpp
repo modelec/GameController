@@ -47,7 +47,7 @@ void GameControllerHandler::handleMessage(const std::string &message) {
 
             if (distance <= 100) {
                 strength = 0xFFFF;
-            } else if (distance <= 500) {
+            } else if (distance <= 400) {
                 double factor = 1 - Modelec::mapValue(distance, 100.0, this->lidarDectectionDistance, 0.0, 1.0);
                 strength = static_cast<Uint16>(factor * 0xFFFF);
             } else {
