@@ -68,6 +68,9 @@ void GameControllerHandler::handleMessage(const std::string &message) {
         }
         else if (tokens[2] == "stop proximity alert") {
             this->rumble = false;
+            if (SDL_GameControllerRumble(controller, 0x0, 0x0, 1000) != 0) {
+                std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
+            }
         }
     }
 }
