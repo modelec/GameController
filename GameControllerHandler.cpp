@@ -120,6 +120,7 @@ void GameControllerHandler::handleEvents() {
                 default:
                     break;
             }
+            usleep(5);
         }
     }
 }
