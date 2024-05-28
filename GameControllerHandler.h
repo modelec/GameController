@@ -30,4 +30,10 @@ private:
     double lidarDectectionDistance = 300;
 
     bool rumble = true;
+
+    int lastLeftXValue = 0;
+    int lastLeftYValue = 0;
+    int lastRightXValue = 0;
+    int lastRightYValue = 0;
+    int borne = 0;
 };

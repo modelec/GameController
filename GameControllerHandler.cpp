@@ -72,6 +72,9 @@ void GameControllerHandler::handleMessage(const std::string &message) {
                 std::cerr << "Erreur lors de l'activation de la vibration : " << SDL_GetError() << std::endl;
             }
         }
+        else if (tokens[2] == "nonvalid borne") {
+            this->borne = std::stoi(tokens[3]);
+        }
     }
 }
 
@@ -94,15 +97,36 @@ void GameControllerHandler::handleEvents() {
                     }
                     else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX) {
                         std::cout << "Left X axis moved to " << event.caxis.value << std::endl;
-                        this->sendMessage("gc;strat;axis;0," + std::to_string(event.caxis.value) + "\n");
+                        int value = event.caxis.value;
+
+                        if (value > borne || value < -borne) {
+                            this->sendMessage("gc;strat;axis;0," + std::to_string(event.caxis.value) + "\n");
+                        } else if (lastLeftXValue > borne || lastLeftXValue < -borne) {
+                            this->sendMessage("gc;strat;axis;0,0\n");
+                        }
+                        lastLeftXValue = event.caxis.value;
                     }
                     else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY) {
                         std::cout << "Left Y axis moved to " << event.caxis.value << std::endl;
-                        this->sendMessage("gc;strat;axis;1," + std::to_string(event.caxis.value) + "\n");
+                        int value = event.caxis.value;
+
+                        if (value > borne || value < -borne) {
+                            this->sendMessage("gc;strat;axis;1," + std::to_string(event.caxis.value) + "\n");
+                        } else if (lastLeftYValue > borne || lastLeftYValue < -borne) {
+                            this->sendMessage("gc;strat;axis;1,0\n");
+                        }
+                        lastLeftYValue = event.caxis.value;
                     }
                     else if (event.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTX) {
                         std::cout << "Right X axis moved to " << event.caxis.value << std::endl;
-                        this->sendMessage("gc;strat;axis;2," + std::to_string(event.caxis.value) + "\n");
+                        int value = event.caxis.value;
+
+                        if (value > borne || value < -borne) {
+                            this->sendMessage("gc;strat;axis;2," + std::to_string(event.caxis.value) + "\n");
+                        } else if (lastRightXValue > borne || lastRightXValue < -borne) {
+                            this->sendMessage("gc;strat;axis;2,0\n");
+                        }
+                        lastRightXValue = event.caxis.value;
                     }
                     else if (event.caxis.axis == SDL_CONTROLLER_AXIS_RIGHTY) {
                         std::cout << "Right Y axis moved to " << event.caxis.value << std::endl;
