@@ -39,6 +39,8 @@ void GameControllerHandler::handleMessage(const std::string &message) {
 
     if (tokens[1] == "all" || tokens[1] == "gc") {
         if (tokens[2] == "stop proximity") {
+            if (!this->rumble) return;
+
             std::vector<std::string> args = Modelec::split(tokens[3], ",");
             double distance = stod(args[0]);
             Uint16 strength;
@@ -59,6 +61,13 @@ void GameControllerHandler::handleMessage(const std::string &message) {
 
         if (tokens[2] == "ready") {
             this->sendMessage("gc;all;game mode;gc\n");
+        }
+
+        if (tokens[2] == "start proximity") {
+            this->rumble = true;
+        }
+        else if (tokens[2] == "stop proximity") {
+            this->rumble = false;
         }
     }
 }
