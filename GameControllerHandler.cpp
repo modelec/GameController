@@ -95,7 +95,7 @@ void GameControllerHandler::handleEvents() {
                         std::cout << "Trigger right moved to " << event.caxis.value << std::endl;
                         this->sendMessage("gc;strat;trigger;1," + std::to_string(event.caxis.value) + "\n");
                     }
-                    else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX) {
+/*                    else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX) {
                         std::cout << "Left X axis moved to " << event.caxis.value << std::endl;
                         int value = event.caxis.value;
 
@@ -105,7 +105,7 @@ void GameControllerHandler::handleEvents() {
                             this->sendMessage("gc;strat;axis;0,0\n");
                         }
                         lastLeftXValue = event.caxis.value;
-                    }
+                    }*/
                     else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY) {
                         std::cout << "Left Y axis moved to " << event.caxis.value << std::endl;
                         int value = event.caxis.value;
